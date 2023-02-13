@@ -35,7 +35,10 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.compose_study.domain.util.TodoAndroidViewModelFactory
+import com.example.compose_study.ui.main.MainViewModel
 import com.example.compose_study.ui.theme.Compose_studyTheme
+import com.example.todolist.ui.main.HomeScreen
 import kotlinx.coroutines.launch
 
 @ExperimentalComposeUiApi
@@ -45,7 +48,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-
+            val viewModel : MainViewModel = viewModel(
+                factory = TodoAndroidViewModelFactory(application)
+            )
+            HomeScreen(viewModel)
         }
     }
 }
+
